@@ -11,6 +11,7 @@ import ru.otus.highload.hw1.dto.User;
 import ru.otus.highload.hw1.dto.UserRegisterPostRequest;
 import ru.otus.highload.hw1.mapper.UserMapper;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -44,6 +45,11 @@ public class UserServiceImpl implements UserService {
             throw new CustomLoginException("Incorrect id/password");
         }
         return UUID.randomUUID().toString();
+    }
+
+    @Override
+    public List<User> findByFI(String firstName, String lastName) {
+        return userDao.findByFI(firstName, lastName);
     }
 
 }
