@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.otus.highload.hw1.dto.*;
 import ru.otus.highload.hw1.service.UserService;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -29,6 +31,11 @@ public class UserController {
     @GetMapping("user/get/{id}")
     public User getUserById(@PathVariable Long id) {
         return userService.findById(id);
+    }
+
+    @GetMapping("user/search")
+    public List<User> searchByFI(@RequestParam String first_name, @RequestParam String last_name) {
+        return userService.findByFI(first_name, last_name);
     }
 
 }

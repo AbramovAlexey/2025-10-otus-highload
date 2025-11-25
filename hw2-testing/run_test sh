@@ -1,0 +1,4 @@
+./jmeter -n -t /home/user/Документы/search-load-test.jmx -l /home/user/Документы/results/results1.jtl -e -o /home/user/Документы/dashbord/1 -Jusers=1 -Jrampup=30 -Jloops=-1 -Jduration=180 -Jjmeter.reportgenerator.overall_granularity=5000
+./jmeter -n -t /home/user/Документы/search-load-test.jmx -l /home/user/Документы/results/results10.jtl -e -o /home/user/Документы/dashbord/10 -Jusers=10 -Jrampup=30 -Jloops=-1 -Jduration=180 -Jjmeter.reportgenerator.overall_granularity=5000
+./jmeter -n -t /home/user/Документы/search-load-test.jmx -l /home/user/Документы/results/results100.jtl -e -o /home/user/Документы/dashbord/100 -Jusers=100 -Jrampup=30 -Jloops=-1 -Jduration=180 -Jjmeter.reportgenerator.overall_granularity=5000
+./jmeter -n -t /home/user/Документы/search-load-test.jmx -l /home/user/Документы/results/results1000.jtl -e -o /home/user/Документы/dashbord/1000 -Jusers=1000 -Jrampup=30 -Jloops=-1 -Jduration=180 -Jjmeter.reportgenerator.overall_granularity=5000

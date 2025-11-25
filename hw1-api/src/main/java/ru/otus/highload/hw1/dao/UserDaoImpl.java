@@ -11,6 +11,7 @@ import ru.otus.highload.hw1.dto.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -56,6 +57,17 @@ public class UserDaoImpl implements UserDao {
                 WHERE id=:id LIMIT 1
                 """;
         return parameterJdbcOperations.queryForObject(query, Map.of("id", id), String.class);
+    }
+
+    @Override
+    public List<User> findByFI(String firstName, String lastName) {
+        String query = """
+                SELECT id, first_name, second_name, birth_date, biography, city, password
+                    FROM users
+                WHERE first_name like :firstName and second_name like :secondName
+                ORDER BY id
+                """;
+        return parameterJdbcOperations.query(query, Map.of("firstName", firstName + "%", "secondName", lastName + "%"), new UserMapper());
     }
 
     private static class UserMapper implements RowMapper<User> {
