@@ -44,6 +44,7 @@
 
     <modules>
         <module>hw1-api</module>
+        <module>hw3-replication</module>
     </modules>
 
 </project>

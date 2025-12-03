@@ -1,3 +1,5 @@
 *.iml
 .idea/
 target/
+/hw3-replication/monitoring/data/grafana/
+/hw3-replication/monitoring/data/prometheus/data/
