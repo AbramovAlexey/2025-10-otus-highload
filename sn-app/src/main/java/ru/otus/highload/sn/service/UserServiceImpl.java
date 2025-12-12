@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.highload.sn.exception.CustomLoginException;
 import ru.otus.highload.sn.dao.UserDao;
 import ru.otus.highload.sn.dto.LoginPostRequest;
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
+    @Transactional(readOnly = true)
     public User findById(Long id) {
         return userDao.findById(id);
     }
@@ -47,6 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findByFI(String firstName, String lastName) {
         return userDao.findByFI(firstName, lastName);
     }
