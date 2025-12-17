@@ -1,0 +1,1 @@
+./jmeter -n -t /home/user/Документы/test-generate-messages.jmx -l /home/user/Документы/results/results1.jtl -e -o /home/user/Документы/dashbord/1 -Jusers=1 -Jrampup=30 -Jloops=-1 -Jduration=20 -Jjmeter.reportgenerator.overall_granularity=5000
