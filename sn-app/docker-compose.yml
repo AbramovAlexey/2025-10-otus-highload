@@ -1,21 +1,59 @@
-version: '3.8'
 services:
   app:
+    container_name: sn-app
     build: .
     ports:
       - "8080:8080"
     depends_on:
-      - postgres
+      - postgres-master
     environment:
       SPRING_PROFILES_ACTIVE: docker
     restart: unless-stopped
 
-  postgres:
-    image: postgres:15
-    environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+  postgres-master:
+    image: postgres:17
+    container_name: postgres-master
+    restart: unless-stopped
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - pgdata_master:/var/lib/postgresql/data
+  replica1:
+    image: postgres:17
+    container_name: postgres-replica1
     restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - data_replica1:/var/lib/postgresql/data
+    depends_on:
+      - postgres-master
+
+  replica2:
+    image: postgres:17
+    container_name: postgres-replica2
+    restart: unless-stopped
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - pgdata_replica2:/var/lib/postgresql/data
+    depends_on:
+      - postgres-master
+
+volumes:
+  pgdata_master:
+  data_replica1:
+  pgdata_replica2:
+
