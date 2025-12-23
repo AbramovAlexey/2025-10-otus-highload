@@ -1,0 +1,3 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://master:5432/mydb
