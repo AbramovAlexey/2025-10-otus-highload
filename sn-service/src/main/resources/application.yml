@@ -6,3 +6,18 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/liquibase-changelog.xml
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        concurrency: 3
+        max-concurrency: 6
+
+
+rabbit:
+  celebrity-queue:
+    batchSize: 50
+    batchTimeOut: 10000
