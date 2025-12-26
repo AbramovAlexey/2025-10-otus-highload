@@ -1,4 +1,4 @@
-package ru.otus.highload.sn;
+package ru.otus.highload.sn.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;

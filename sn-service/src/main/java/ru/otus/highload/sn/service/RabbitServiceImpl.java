@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
-import static ru.otus.highload.sn.RabbitConfig.EXCHANGE_NAME;
-import static ru.otus.highload.sn.RabbitConfig.ROUTING_KEY_USER;
+import static ru.otus.highload.sn.config.RabbitConfig.EXCHANGE_NAME;
+import static ru.otus.highload.sn.config.RabbitConfig.ROUTING_KEY_USER;
 
 
 @Service
@@ -19,7 +19,11 @@ public class RabbitServiceImpl implements RabbitService {
         rabbitTemplate.convertAndSend(
                 EXCHANGE_NAME,
                 ROUTING_KEY_USER.replace("*", String.valueOf(authorId)),
-                text
+                text,
+                message -> {
+                    message.getMessageProperties().setHeader("postId", postId);
+                    return message;
+                }
         );
     }
 
