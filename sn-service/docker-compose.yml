@@ -48,5 +48,26 @@ services:
       - healthcheck-volume:/healthcheck
     depends_on: [master]
     environment: *AUTH
+  redis:
+    image: redis:latest
+    container_name: redis_server
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: redis_insight
+    restart: always
+    ports:
+      - "5540:5540"
+    volumes:
+      - insight_data:/data
+    depends_on:
+      - redis
 volumes:
   healthcheck-volume:
+  redis_data:
+  insight_data:
