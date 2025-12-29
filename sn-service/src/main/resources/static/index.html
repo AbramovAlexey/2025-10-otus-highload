@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+
+</head>
+<body>
+<label>Page for debug</label>
+
+<script type="text/javascript">
+    var socket = new SockJS('/ws');
+    var stompClient = Stomp.over(socket);
+
+    stompClient.connect({}, function() {
+        stompClient.subscribe('/topic/u-2/post/feed/posted', function(message) {
+            const notification = JSON.parse(message.body);
+            if (notification.rawData) {
+                console.log("Recieved new single post, add to UI");
+            } else {
+                console.log("Recieved new notif, start to request REST feed");
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
