@@ -1,6 +1,9 @@
 package ru.otus.highload.sn.dao;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
@@ -17,9 +20,16 @@ import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "dialog.storage.type", havingValue = "postgres", matchIfMissing = true)
+@Slf4j
 public class DialogDaoImpl implements DialogDao {
 
     private final NamedParameterJdbcOperations parameterJdbcOperations;
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("Using postgres storage for dialogs");
+    }
 
     @Override
     public Long addMessage(Long fromId, Long toId, String content) {
@@ -48,10 +58,6 @@ public class DialogDaoImpl implements DialogDao {
         return parameterJdbcOperations.query(query,
                                              Map.of("conversation_id", getConversationId(fromId, toId)),
                                              new DialogMapper());
-    }
-
-    private String getConversationId(Long fromId, Long toId) {
-        return "%s_%s".formatted(Math.min(fromId, toId), Math.max(fromId, toId));
     }
 
     private class DialogMapper implements RowMapper<DialogMessage> {
