@@ -9,6 +9,15 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: docker
     restart: unless-stopped
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
   master:
     container_name: "${COMPOSE_PROJECT_NAME:-citus}_master"
     image: "citusdata/citus:12.1.3"
@@ -27,6 +36,8 @@ services:
     depends_on: [manager]
     environment: *AUTH
     command: "/wait-for-manager.sh"
+    deploy:
+      replicas: 3
     volumes:
       - healthcheck-volume:/healthcheck
   manager:
