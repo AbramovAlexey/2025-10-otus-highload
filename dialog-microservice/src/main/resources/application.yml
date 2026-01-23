@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+management:
+  tracing:
+    baggage:
+      remote-fields:
+        - x-request-id
+      correlation:
+        fields:
+          - x-request-id
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5p [%X{traceId:-}, %X{x-request-id:-}] %c{1}:%L - %m%n"

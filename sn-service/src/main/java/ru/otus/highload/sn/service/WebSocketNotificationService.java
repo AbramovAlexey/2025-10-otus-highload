@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.ChannelListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
-import ru.otus.highload.sn.dto.WSClientNotificationDto;
+import ru.otus.highload.api.dto.WSClientNotificationDto;
 
 import static ru.otus.highload.sn.config.WebSocketConfig.CHANNEL_NAME;
 

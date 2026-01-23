@@ -8,7 +8,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
 import ru.otus.highload.sn.dao.UserDao;
-import ru.otus.highload.sn.dto.WSClientNotificationDto;
+import ru.otus.highload.api.dto.WSClientNotificationDto;
 import ru.otus.highload.sn.service.PostService;
 import ru.otus.highload.sn.service.WebSocketNotificationService;
 
