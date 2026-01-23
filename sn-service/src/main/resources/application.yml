@@ -15,11 +15,9 @@ spring:
       simple:
         concurrency: 3
         max-concurrency: 6
+
+
 rabbit:
   celebrity-queue:
     batchSize: 50
     batchTimeOut: 10000
-  redis:
-    port: 6379
-
-dialog.storage.type: redis

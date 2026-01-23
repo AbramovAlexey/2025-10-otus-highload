@@ -3,6 +3,3 @@ spring:
     url: jdbc:postgresql://master:5432/mydb
   rabbitmq:
     host: rabbitmq
-  data:
-    redis:
-      host: redis_server
