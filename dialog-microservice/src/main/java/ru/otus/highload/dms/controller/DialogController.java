@@ -1,15 +1,15 @@
-package ru.otus.highload.sn.controller;
+package ru.otus.highload.dms.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.otus.highload.api.dto.DialogMessage;
-import ru.otus.highload.sn.dto.DialogMessageRestDto;
-import ru.otus.highload.sn.service.DialogService;
+import ru.otus.highload.dms.dto.DialogMessageRestDto;
+import ru.otus.highload.dms.service.DialogService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/dialog")
+@RequestMapping("/dialog/v2")
 @RequiredArgsConstructor
 public class DialogController {
 

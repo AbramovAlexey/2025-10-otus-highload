@@ -1,4 +1,4 @@
-package ru.otus.highload.sn.dto;
+package ru.otus.highload.api.dto;
 
 import lombok.Builder;
 import lombok.Data;

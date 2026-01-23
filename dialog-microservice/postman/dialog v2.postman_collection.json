@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "be2ec3a2-fe66-495d-81d0-6a8d837f6af8",
+		"name": "dialog v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2847992",
+		"_collection_link": "https://otus99.postman.co/workspace/otus~31bf8780-9cf0-45c6-b335-114b1a119b7d/collection/2847992-be2ec3a2-fe66-495d-81d0-6a8d837f6af8?action=share&source=collection_link&creator=2847992"
+	},
+	"item": [
+		{
+			"name": "send message",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \n    \"text\" : \"message1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/dialog/v2/1/send?to=2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"dialog",
+						"v2",
+						"1",
+						"send"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": ""
+		}
+	]
+}

@@ -1,4 +1,4 @@
-package ru.otus.highload.sn.dto;
+package ru.otus.highload.dms.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class DialogMessageDto {
+public class DialogMessageRestDto {
 
     String text;
 

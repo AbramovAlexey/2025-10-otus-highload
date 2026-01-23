@@ -1,4 +1,4 @@
-package ru.otus.highload.sn.dao;
+package ru.otus.highload.dms.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.RowMapper;
@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
-import ru.otus.highload.sn.dto.DialogMessage;
+import ru.otus.highload.api.dto.DialogMessage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

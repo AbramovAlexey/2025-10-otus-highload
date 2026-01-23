@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.highload.sn.dao.PostDao;
 import ru.otus.highload.sn.dao.UserDao;
-import ru.otus.highload.sn.dto.Post;
-import ru.otus.highload.sn.dto.PostCreatePostRequest;
+import ru.otus.highload.api.dto.Post;
+import ru.otus.highload.api.dto.PostCreatePostRequest;
 
 import java.util.List;
 
