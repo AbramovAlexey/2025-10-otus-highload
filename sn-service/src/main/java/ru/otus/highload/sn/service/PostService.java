@@ -1,7 +1,7 @@
 package ru.otus.highload.sn.service;
 
-import ru.otus.highload.sn.dto.Post;
-import ru.otus.highload.sn.dto.PostCreatePostRequest;
+import ru.otus.highload.api.dto.Post;
+import ru.otus.highload.api.dto.PostCreatePostRequest;
 
 import java.util.List;
 

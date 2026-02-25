@@ -2,8 +2,8 @@ package ru.otus.highload.sn.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.otus.highload.sn.dto.Post;
-import ru.otus.highload.sn.dto.PostCreatePostRequest;
+import ru.otus.highload.api.dto.Post;
+import ru.otus.highload.api.dto.PostCreatePostRequest;
 import ru.otus.highload.sn.service.PostService;
 
 import java.util.List;

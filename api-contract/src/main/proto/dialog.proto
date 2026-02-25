@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ru.otus.highload.api.grpc";
+
+service DialogService {
+    rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
+    rpc GetMessagesList (GetMessagesRequest) returns (GetMessagesResponse);
+}
+
+message SendMessageRequest {
+    string user_id = 1;
+    string user_id_to = 2;
+    DialogMessageDto message = 3;
+}
+
+message SendMessageResponse {
+    string status_message = 1;
+}
+
+message GetMessagesRequest {
+    string user_id = 1;
+    string user_id_to = 2;
+}
+
+message GetMessagesResponse {
+    repeated DialogMessage messages = 1;
+}
+
+message DialogMessageDto {
+    string text = 1;
+}
+
+message DialogMessage {
+    string to = 1;
+    string from = 2;
+    string text = 3;
+}

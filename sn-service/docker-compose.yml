@@ -1,4 +1,15 @@
 services:
+  dms:
+    container_name: dialog-microservice
+    build: ../dialog-microservice/
+    ports:
+      - "8081:8080"
+      - "9090:9090"
+    depends_on:
+      - master
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    restart: unless-stopped
   app:
     container_name: sn-service
     build: .

@@ -3,3 +3,7 @@ spring:
     url: jdbc:postgresql://master:5432/mydb
   rabbitmq:
     host: rabbitmq
+grpc:
+  client:
+    dialog-service:
+      address: 'static://dms:9090'

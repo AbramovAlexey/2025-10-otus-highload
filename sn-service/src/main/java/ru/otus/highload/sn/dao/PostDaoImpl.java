@@ -8,8 +8,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
-import ru.otus.highload.sn.dto.Post;
-import ru.otus.highload.sn.dto.PostCreatePostRequest;
+import ru.otus.highload.api.dto.Post;
+import ru.otus.highload.api.dto.PostCreatePostRequest;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

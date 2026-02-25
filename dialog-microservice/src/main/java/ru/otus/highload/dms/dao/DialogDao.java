@@ -1,6 +1,7 @@
-package ru.otus.highload.sn.dao;
+package ru.otus.highload.dms.dao;
 
-import ru.otus.highload.sn.dto.DialogMessage;
+
+import ru.otus.highload.api.dto.DialogMessage;
 
 import java.util.List;
 
