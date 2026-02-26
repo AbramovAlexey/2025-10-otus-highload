@@ -1,8 +1,6 @@
 spring:
   datasource:
     master:
-      url: jdbc:postgresql://postgres-master:5432/mydb
-    slave1:
-      url: jdbc:postgresql://replica1:5432/mydb
-    slave2:
-      url: jdbc:postgresql://replica2:5432/mydb
+      url: jdbc:postgresql://pg-master:5432/mydb
+    slave:
+      url: jdbc:postgresql://haproxy-db:5432/mydb

@@ -25,14 +25,12 @@ public class ReplicationDataSourceConfig {
 
     @Bean
     public DataSource routingDataSource(@Qualifier("masterDataSource") DataSource masterDataSource,
-                                        @Qualifier("slave1DataSource") DataSource slave1DataSource,
-                                        @Qualifier("slave2DataSource") DataSource slave2DataSource) {
+                                        @Qualifier("slaveDataSource") DataSource slaveDataSource) {
         ReplicationRoutingDataSource routingDataSource = new ReplicationRoutingDataSource();
 
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put(DataSourceType.MASTER, masterDataSource);
-        targetDataSources.put(DataSourceType.SLAVE_1, slave1DataSource);
-        targetDataSources.put(DataSourceType.SLAVE_2, slave2DataSource);
+        targetDataSources.put(DataSourceType.SLAVE, slaveDataSource);
 
         routingDataSource.setTargetDataSources(targetDataSources);
         routingDataSource.setDefaultTargetDataSource(masterDataSource);
@@ -46,14 +44,10 @@ public class ReplicationDataSourceConfig {
     }
 
     @Bean
-    public DataSource slave1DataSource(@Qualifier("slave1DataSourceProperties") DataSourceProperties dataSourceProperties) {
+    public DataSource slaveDataSource(@Qualifier("slaveDataSourceProperties") DataSourceProperties dataSourceProperties) {
         return dataSourceProperties.initializeDataSourceBuilder().build();
     }
 
-    @Bean
-    public DataSource slave2DataSource(@Qualifier("slave2DataSourceProperties") DataSourceProperties dataSourceProperties) {
-        return dataSourceProperties.initializeDataSourceBuilder().build();
-    }
 
     @Bean
     @ConfigurationProperties("spring.datasource.master")
@@ -62,14 +56,8 @@ public class ReplicationDataSourceConfig {
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.slave1")
-    public DataSourceProperties slave1DataSourceProperties() {
-        return new DataSourceProperties();
-    }
-
-    @Bean
-    @ConfigurationProperties("spring.datasource.slave2")
-    public DataSourceProperties slave2DataSourceProperties() {
+    @ConfigurationProperties("spring.datasource.slave")
+    public DataSourceProperties slaveDataSourceProperties() {
         return new DataSourceProperties();
     }
 

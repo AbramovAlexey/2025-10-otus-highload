@@ -17,9 +17,7 @@ public class ReplicationRoutingDataSource extends AbstractRoutingDataSource {
         DataSourceType resultType;
         var isReadOnly = TransactionSynchronizationManager.isCurrentTransactionReadOnly();
         if (isReadOnly) {
-            //"балансировка" чтения
-            int slaveIndex = counter.getAndIncrement() % 2;
-            resultType = slaveIndex == 0 ? DataSourceType.SLAVE_1 : DataSourceType.SLAVE_2;
+            resultType = DataSourceType.SLAVE;
         } else {
             resultType = DataSourceType.MASTER;
         }
