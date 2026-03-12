@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 5s
+scrape_configs:
+  - job_name: 'messages-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [messages-service:8080] # Замените на реальный хост сервиса чатов
+
