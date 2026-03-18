@@ -1,0 +1,63 @@
+services:
+  messages:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - pg-master
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    restart: unless-stopped
+
+  counter:
+    build: ../counter-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - kafka
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    restart: unless-stopped
+
+  pg-master:
+    image: postgres:17
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    command: ["postgres", "-c", "wal_level=logical"]
+
+  zookeeper:
+    image: quay.io/debezium/zookeeper:2.4
+    ports:
+      - 2181:2181
+
+  kafka:
+    image: quay.io/debezium/kafka:2.4
+    ports:
+      - 9092:9092
+    depends_on:
+      - zookeeper
+    environment:
+      - ZOOKEEPER_CONNECT=zookeeper:2181
+
+  debezium:
+    image: quay.io/debezium/server:2.4
+    container_name: debezium-server
+    volumes:
+      - ./debezium-conf:/debezium/conf  # Папка с конфигом на твоем диске
+    depends_on:
+      - kafka
+      - pg-master
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+
+  redis:
+    image: redis:7.2-alpine
+    ports:
+      - 6379:6379
+
+
